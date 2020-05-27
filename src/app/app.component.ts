@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -7,9 +8,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = "materialDemo";
+  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  isEditable = false;
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -20,5 +21,17 @@ export class AppComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ["", Validators.required],
     });
+  }
+  staff: any = {
+    qualification: [],
+    experience: [],
+  };
+  addQualification() {
+    this.staff.qualification.push("a");
+    console.log(this.staff.qualification);
+  }
+  addExperience() {
+    this.staff.experience.push("exp");
+    console.log(this.staff.experience);
   }
 }

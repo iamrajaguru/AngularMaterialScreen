@@ -1,41 +1,667 @@
-<button mat-raised-button>Hello</button>
-<button mat-raised-button (click)="isEditable = !isEditable">
-  {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-</button>
+<div>
+  <!-- <mat-card class="row pad-zero">
+      <mat-card-title class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-head">
+        Personal Info
+      </mat-card-title>
+      <mat-card-content
+        class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-body"
+      >
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-form-field
+            class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Login ID</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
 
-<mat-horizontal-stepper linear #stepper>
-  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Firstname</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-4 col-md-4 col-xl-6 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Middlename</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-4 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Lastname</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-form-field
+            class="col-sm-6 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Nationality</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-6 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Religion</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <div class="col-sm-4 col-md-4 col-xl-4 col-lg-4" style="margin: 2%;">
+            <mat-label style="padding-right: 2%;">Gender</mat-label>
+            <mat-radio-group aria-label="Gender">
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+              <mat-radio-button value="others">Others</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-sm-4 col-md-4 col-xl-4 col-lg-4" style="margin: 2%;">
+            <mat-label style="padding-right: 2%;">Martial Status</mat-label>
+            <mat-radio-group aria-label="Martial Status">
+              <mat-radio-button value="single">Single</mat-radio-button>
+              <mat-radio-button value="married">Married</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card> -->
+  <!-- 
+    <mat-card class="row pad-zero marg-tp-head">
+      <mat-card-title class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-head">
+        Qualification Details
+      </mat-card-title>
+      <mat-card-content
+        class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-body"
+        ><div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-label style="padding: 2%;">Qualification</mat-label>
+          <div *ngFor="let qual of staff.qualification; index as i">
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Degree</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Branch</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Year Of Passing</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>College/University</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <button
+            style="margin: 2%;"
+            mat-raised-button
+            (click)="addQualification()"
+          >
+            ADD +
+          </button>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-label style="padding: 2%;">Employment History</mat-label>
+
+          <div
+            *ngFor="let exp of staff.experience; index as i"
+            class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+          >
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Designation</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Subject/Field</mat-label>
+              <input matInput />
+            </mat-form-field>
+
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>College/University</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Year Of Experience</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <button
+            style="margin: 2%;"
+            mat-raised-button
+            (click)="addExperience()"
+          >
+            ADD +
+          </button>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <div class="col-sm-4 col-md-4 col-xl-4 col-lg-4">
+            <mat-label style="padding-left: 2%; padding-right: 2%;"
+              >Background</mat-label
+            >
+            <mat-radio-group aria-label="Background">
+              <mat-radio-button value="teaching">Teaching</mat-radio-button>
+              <mat-radio-button value="non-teaching"
+                >Non-teaching</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-form-field
+            class="col-sm-4 col-md-4 col-xl-4 col-lg-4"
+            style="padding: 2%;"
+          >
+            <mat-label>Designation</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Date Of Joining</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Date Of Exit</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card> -->
+  <!-- 
+    <mat-card class="row pad-zero marg-tp-head">
+      <mat-card-title class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-head">
+        Contact & Bank Details
+      </mat-card-title>
+      <mat-card-content
+        class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-body"
+      >
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-form-field
+            class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Contact Number</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Personal Email</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-6 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Official Email</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Account Number</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-6 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>IFSC Code</mat-label>
+            <input matInput />
+          </mat-form-field>
+
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-6 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>PF Account Number</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Address Line-1</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Address Line-2</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Address Line-3</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>City</mat-label>
+            <input matInput />
+          </mat-form-field>
+          <mat-form-field
+            class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+            style="padding-left: 2%; padding-right: 2%;"
+          >
+            <mat-label>Pin/Post</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card> -->
+
+  <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
+  </button> -->
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out Personal Details</ng-template>
+        
+          <mat-card class="row pad-zero marg-tp-head">
+            <mat-card-title
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-head"
+            >
+              Personal Info
+            </mat-card-title>
+            <mat-card-content
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-body"
+            >
+              <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Login ID</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+                <mat-form-field
+                  class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Firstname</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-4 col-md-4 col-xl-6 col-lg-4"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Middlename</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-4 col-md-4 col-xl-4 col-lg-4"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Lastname</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+                <mat-form-field
+                  class="col-sm-6 col-md-4 col-xl-4 col-lg-4"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Nationality</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-6 col-md-4 col-xl-4 col-lg-4"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Religion</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+                <div
+                  class="col-sm-4 col-md-4 col-xl-4 col-lg-4"
+                  style="margin: 2%;"
+                >
+                  <mat-label style="padding-right: 2%;">Gender</mat-label>
+                  <mat-radio-group aria-label="Gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                    <mat-radio-button value="others">Others</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div
+                  class="col-sm-4 col-md-4 col-xl-4 col-lg-4"
+                  style="margin: 2%;"
+                >
+                  <mat-label style="padding-right: 2%;"
+                    >Martial Status</mat-label
+                  >
+                  <mat-radio-group aria-label="Martial Status">
+                    <mat-radio-button value="single">Single</mat-radio-button>
+                    <mat-radio-button value="married">Married</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <!-- <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            placeholder="Last name, First name"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field> -->
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out Qualification Details</ng-template>
+
+        <mat-card class="row pad-zero marg-tp-head">
+          <mat-card-title
+            class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-head"
+          >
+            Qualification Details
+          </mat-card-title>
+          <mat-card-content
+            class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-body"
+            ><div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+              <mat-label style="padding: 2%;">Qualification</mat-label>
+              <div *ngFor="let qual of staff.qualification; index as i">
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Degree</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Branch</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Year Of Passing</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>College/University</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+              <button
+                style="margin: 2%;"
+                mat-raised-button
+                (click)="addQualification()"
+              >
+                ADD +
+              </button>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+              <mat-label style="padding: 2%;">Employment History</mat-label>
+
+              <div
+                *ngFor="let exp of staff.experience; index as i"
+                class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              >
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Designation</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Subject/Field</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>College/University</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field
+                  class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+                  style="padding-left: 2%; padding-right: 2%;"
+                >
+                  <mat-label>Year Of Experience</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+              <button
+                style="margin: 2%;"
+                mat-raised-button
+                (click)="addExperience()"
+              >
+                ADD +
+              </button>
+            </div>
+            <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+              <div class="col-sm-4 col-md-4 col-xl-4 col-lg-4">
+                <mat-label style="padding-left: 2%; padding-right: 2%;"
+                  >Background</mat-label
+                >
+                <mat-radio-group aria-label="Background">
+                  <mat-radio-button value="teaching">Teaching</mat-radio-button>
+                  <mat-radio-button value="non-teaching"
+                    >Non-teaching</mat-radio-button
+                  >
+                </mat-radio-group>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+              <mat-form-field
+                class="col-sm-4 col-md-4 col-xl-4 col-lg-4"
+                style="padding: 2%;"
+              >
+                <mat-label>Designation</mat-label>
+                <input matInput />
+              </mat-form-field>
+              <mat-form-field
+                class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+                style="padding-left: 2%; padding-right: 2%;"
+              >
+                <mat-label>Date Of Joining</mat-label>
+                <input matInput />
+              </mat-form-field>
+              <mat-form-field
+                class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+                style="padding-left: 2%; padding-right: 2%;"
+              >
+                <mat-label>Date Of Exit</mat-label>
+                <input matInput />
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <!-- <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            formControlName="secondCtrl"
+            placeholder="Ex. 1 Main St, New York, NY"
+            required
+          />
+        </mat-form-field> -->
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Contact Details</ng-template>
+
+      <mat-card class="row pad-zero marg-tp-head">
+        <mat-card-title
+          class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-head"
+        >
+          Contact & Bank Details
+        </mat-card-title>
+        <mat-card-content
+          class="col-sm-12 col-md-12 col-xl-12 col-lg-12 card-body"
+        >
+          <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+            <mat-form-field
+              class="col-sm-12 col-md-12 col-xl-12 col-lg-12"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Contact Number</mat-label>
+              <input matInput />
+            </mat-form-field>
+
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Personal Email</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-6 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Official Email</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Account Number</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-6 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>IFSC Code</mat-label>
+              <input matInput />
+            </mat-form-field>
+
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-6 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>PF Account Number</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-xl-6 col-lg-6 inline-blk">
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Address Line-1</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Address Line-2</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Address Line-3</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>City</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <mat-form-field
+              class="col-sm-2 col-md-4 col-xl-4 col-lg-4"
+              style="padding-left: 2%; padding-right: 2%;"
+            >
+              <mat-label>Pin/Post</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
